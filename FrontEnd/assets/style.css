@@ -186,3 +186,25 @@ footer nav ul {
 	margin: 2em
 }
 
+/*Mon ajout de code*/
+
+.filtres_boutons{
+	display: flex;
+	justify-content: center;
+	gap: 10px;
+	margin-top: 51px;
+	margin-bottom: 50px;
+}
+
+.bouton_filtre{
+	font-family: 'syne';
+    font-size: 17px;
+    font-weight: bold;
+	color: #1D6154;
+	min-width: 100px;
+	padding: 9px;
+    border-radius: 30px;
+    background-color: #ffffff;
+    border: 1px solid #1D6154;
+    
+    }
