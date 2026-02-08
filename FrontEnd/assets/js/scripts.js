@@ -65,7 +65,7 @@
                 filtres.forEach( element => { element.classList.remove('selectionne')})
                 event.currentTarget.classList.add('selectionne')
 
-                // Filtrage des chantiers
+                //Filtrage des chantiers
                 const chantiers = document.querySelectorAll(".chantier")
                 const catId = event.currentTarget.dataset.cat
 
