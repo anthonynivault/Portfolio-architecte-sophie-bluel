@@ -318,3 +318,38 @@ body > .container {
 #connexion{
 	margin-top:150px;
 }
+
+/*Mode Édition*/
+
+.bandeau_noir{
+	background-color: #000;
+	color: #fff;
+	display: none;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	font-size: 16px;
+	padding: 20px 0;
+}
+
+.connecte .bandeau_noir{
+  	display: flex;
+}
+
+.connecte .filtres_boutons { 
+	display: none; }
+
+.portfolio_titre{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.bouton_modifier {
+  	display: none;
+  }
+
+.connecte .bouton_modifier {
+ 	 display: flex;
+}

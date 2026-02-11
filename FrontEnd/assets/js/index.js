@@ -77,3 +77,34 @@
         })
     }
 }
+
+{//Mode édition
+    function verifierConnexion() {
+    const token = localStorage.getItem("token");
+
+    if (token) {
+    document.body.classList.add("connecte");
+    }
+}
+
+verifierConnexion();
+
+    function gererBoutonLoginLogout() {
+    const token = localStorage.getItem("token");
+    const loginLink = document.querySelector('nav a[href="login.html"]');
+
+    if (token) {
+        loginLink.textContent = "logout";
+
+        loginLink.addEventListener("click", () => {
+        localStorage.removeItem("token");
+        localStorage.removeItem("userId");
+        window.location.reload();
+        });
+    }
+    }
+
+gererBoutonLoginLogout();
+
+
+}
