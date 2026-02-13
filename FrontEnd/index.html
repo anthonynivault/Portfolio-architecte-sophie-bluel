@@ -45,7 +45,7 @@
 			<section id="portfolio">
 				<div class="portfolio_titre">
 					<h2>Mes Projets</h2>
-					<button class="bouton_modifier" type="button"><i class="fa-regular fa-pen-to-square"></i>modifier</button>
+					<a href="#modale1"><button class="bouton_modifier" type="button"><i class="fa-regular fa-pen-to-square"></i>modifier</button></a>
 					</div>
 					<div class="filtres_boutons">
 		<!-- Catégorie dynamique -->	                      
@@ -82,6 +82,20 @@
 			</nav>
 		</div>
 	</footer>
+
+	<aside id="modale1" class="modale" aria-hidden="true" role="dialog" aria-labelledby="titre_modale">
+		
+		<div class="modale_contenu">
+			<span id="fermer_modale"><i class="fa-solid fa-xmark"></i></span>
+			<h2 id="titre_modale" class="modale_titre">Galerie photo</h2>
+			<div class="gallerie_modale">
+				<!-- Gallerie modale dynamique -->
+			</div>
+			<div class="ligne"></div>
+			<a href="#"><button class="bouton_ajouter" type="button">Ajouter une photo</button></a>
+		</div>
+	</aside>
+
 
 </body>
 

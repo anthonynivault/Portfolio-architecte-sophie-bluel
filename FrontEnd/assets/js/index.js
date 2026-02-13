@@ -106,5 +106,35 @@ verifierConnexion();
 
 gererBoutonLoginLogout();
 
+//Récupération dynamique de la galerie pour la modale
+
+    async function recupererTravauxAPI(){
+        const response = await fetch ("http://localhost:5678/api/works")
+        return await response.json()  
+    }
+
+    async function afficherTravauxGallerie(){
+        const travaux = await recupererTravauxAPI()
+        let gallery = document.querySelector(".gallerie_modale")
+        
+        travaux.forEach(element => {
+            let src = element.imageUrl
+            let alt = element.title
+            let fig = `
+                <figure class="photo_modale">
+                    <img src="${src}" alt="${alt}">
+                    <span class="corbeille">
+                <i class="fa-solid fa-trash-can"></i>
+                </span>
+                </figure>
+                `
+            
+            gallery.innerHTML +=fig
+        });
+    }
+
+    afficherTravauxGallerie()
+
+
 
 }
