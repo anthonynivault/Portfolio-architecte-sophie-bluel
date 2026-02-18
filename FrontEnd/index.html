@@ -83,16 +83,44 @@
 		</div>
 	</footer>
 
-	<aside id="modale1" class="modale" aria-hidden="true" role="dialog" aria-labelledby="titre_modale">
+	<aside id="modale1" class="modale" aria-hidden="true" role="dialog" aria-labelledby="titre_modale" style="display:none;">
 		
-		<div class="modale_contenu">
-			<span id="fermer_modale"><i class="fa-solid fa-xmark"></i></span>
-			<h2 id="titre_modale" class="modale_titre">Galerie photo</h2>
-			<div class="gallerie_modale">
-				<!-- Gallerie modale dynamique -->
+		<div class="modale_contenu modale-stop">
+
+			<div id="page-1_modale" >
+				<span class="fermer_modale"><i class="fa-solid fa-xmark"></i></span>
+				<h2 class="titres_modale" class="modale_titre">Galerie photo</h2>
+				<div class="gallerie_modale">
+					<!-- Gallerie modale dynamique -->
+				</div>
+				<div class="ligne"></div>
+				<a href="#"><button class="bouton_ajouter" type="button">Ajouter une photo</button></a>
 			</div>
-			<div class="ligne"></div>
-			<a href="#"><button class="bouton_ajouter" type="button">Ajouter une photo</button></a>
+
+			<div id="page-2_modale">
+				<div class="retour_fermer">
+					<span class="retour_modale"><i class="fa-solid fa-arrow-left"></i></span>
+					<span class="fermer_modale"><i class="fa-solid fa-xmark"></i></span>
+				</div>
+				<h2 class="titres_modale" class="modale_titre">Ajout photo</h2>
+				
+				<form class="form_modale" action="#" method="post">
+					
+					<div id="zone_image">
+						<span class="symbole_img"><i class="fa-regular fa-image"></i></span>
+						<label for="input" class="bouton_fichier">+ Ajouter une photo</label>
+						<p class="texte_info">jpg, png : 4 Mo max</p>
+						<input type="file" id="input_fichier" accept="image/png, image/jpeg">
+					</div>
+					<label for="titre">Titre</label>
+					<input type="text" name="titre" id="titre">
+					<label for="categorie">Catégorie</label>
+					<input type="categorie" name="categorie" id="categorie">
+					<div class="ligne"></div>
+					<input class="bouton_valider" type="submit" value="Valider">
+				</form>
+
+			</div>
 		</div>
 	</aside>
 

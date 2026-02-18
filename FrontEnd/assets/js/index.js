@@ -134,7 +134,67 @@ gererBoutonLoginLogout();
     }
 
     afficherTravauxGallerie()
-
-
-
 }
+
+{//Modale
+let modale = null
+
+
+const page1 = document.querySelector('#page-1_modale');
+const page2 = document.querySelector('#page-2_modale');
+const boutonAjouter = document.querySelector('.bouton_ajouter');
+const boutonRetour = document.querySelector('.retour_modale');
+
+    const ouvrirModale = function (e){
+        e.preventDefault()
+
+        const target = document.querySelector('#modale1')
+        target.style.display = null
+        target.removeAttribute('aria-hidden')
+        target.setAttribute ('aria-modal', 'true')
+        modale = target
+        modale.addEventListener ('click', fermerModale)
+        modale.querySelectorAll('.fermer_modale').forEach(btn => btn.addEventListener('click', fermerModale))
+        modale.querySelector('.modale-stop').addEventListener('click', stopPropagation)
+    }
+
+    const fermerModale = function (e) {
+        if(modale === null) return
+        e.preventDefault()
+        modale.style.display = "none"
+        modale.setAttribute('aria-hidden' , 'true')
+        modale.removeAttribute ('aria-modal')
+        modale.removeEventListener ('click', fermerModale)
+        modale.querySelectorAll('.fermer_modale').forEach(btn => btn.removeEventListener('click', fermerModale))
+        modale.querySelector('.modale-stop').removeEventListener('click', stopPropagation)
+        modale = null
+        page2.style.display = 'none'
+         page1.style.display = 'block'
+        
+    }
+
+    const stopPropagation = function (e) {
+        e.stopPropagation()
+    }
+
+    document.querySelector('.bouton_modifier')
+    .addEventListener('click', ouvrirModale);
+
+    window.addEventListener('keydown', function (e) {
+        if (e.key === "Escape" || e.key === "Esc") {
+            fermerModale(e)
+        }
+    })
+
+    boutonAjouter.addEventListener('click', (e) => {
+    e.preventDefault();
+    page1.style.display = 'none'
+    page2.style.display = 'block'
+    });
+
+    boutonRetour.addEventListener('click', (e) => {
+    e.preventDefault();
+    page2.style.display = 'none'
+    page1.style.display = 'block'
+    });
+  }
