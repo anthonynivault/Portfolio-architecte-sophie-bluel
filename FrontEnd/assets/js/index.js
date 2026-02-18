@@ -8,6 +8,7 @@
     async function afficherTravauxGallerie(){
         const travaux = await recupererTravauxAPI()
         let gallery = document.querySelector(".gallery")
+        gallery.innerHTML = ""
         
         travaux.forEach(element => {
             let src = element.imageUrl
@@ -15,7 +16,7 @@
             let imgTitre = element.title
             let imgCategorieId = element.categoryId
             let fig = `
-                <figure class= "chantier categorie_${imgCategorieId} select">
+                <figure class= "chantier categorie_${imgCategorieId} select" data-id="${element.id}">
                     <img src="${src}" alt="${alt}">
                     <figcaption>${imgTitre}</figcaption>
                 </figure>
@@ -106,7 +107,7 @@ verifierConnexion();
 
 gererBoutonLoginLogout();
 
-//Récupération dynamique de la galerie pour la modale
+//Récupération dynamique de la galerie pour la modale et suppression
 
     async function recupererTravauxAPI(){
         const response = await fetch ("http://localhost:5678/api/works")
@@ -115,13 +116,14 @@ gererBoutonLoginLogout();
 
     async function afficherTravauxGallerie(){
         const travaux = await recupererTravauxAPI()
-        let gallery = document.querySelector(".gallerie_modale")
+        const gallery = document.querySelector(".gallerie_modale")
+        gallery.innerHTML = ""
         
         travaux.forEach(element => {
             let src = element.imageUrl
             let alt = element.title
             let fig = `
-                <figure class="photo_modale">
+                <figure class="photo_modale" data-id="${element.id}">
                     <img src="${src}" alt="${alt}">
                     <span class="corbeille">
                 <i class="fa-solid fa-trash-can"></i>
@@ -131,9 +133,54 @@ gererBoutonLoginLogout();
             
             gallery.innerHTML +=fig
         });
+
+        activerSuppression()
     }
 
     afficherTravauxGallerie()
+
+    async function supprimerTravail(id) {
+    const token = localStorage.getItem("token")
+
+    const response = await fetch(`http://localhost:5678/api/works/${id}`, {
+        method: "DELETE",
+        headers: {Authorization: `Bearer ${token}`}
+    })
+
+     return response.ok
+    }
+
+    function activerSuppression() {
+        const corbeilles = document.querySelectorAll(".corbeille")
+
+        corbeilles.forEach(corbeille => {
+            corbeille.addEventListener("click", async (e) => {
+                e.stopPropagation()
+
+                const figure = corbeille.closest(".photo_modale")
+                const id = figure.dataset.id
+
+                const success = await supprimerTravail(id)
+
+                if (success) {
+                    figure.remove()
+                    supprimerTravailGaleriePrincipale(id)
+                }
+                else {
+                    alert("Erreur lors de la suppression du projet.")
+}
+            })
+        })
+    }
+
+   
+
+    function supprimerTravailGaleriePrincipale(id) {
+        const chantier = document.querySelector(`.gallery figure[data-id="${id}"]`)
+        if (chantier) {
+            chantier.remove()
+        }
+    }
 }
 
 {//Modale
