@@ -108,14 +108,14 @@
 					
 					<div id="zone_image">
 						<span class="symbole_img"><i class="fa-regular fa-image"></i></span>
-						<label for="input" class="bouton_fichier">+ Ajouter une photo</label>
+						<label for="input_fichier" class="bouton_fichier">+ Ajouter une photo</label>
 						<p class="texte_info">jpg, png : 4 Mo max</p>
 						<input type="file" id="input_fichier" accept="image/png, image/jpeg">
 					</div>
 					<label for="titre">Titre</label>
 					<input type="text" name="titre" id="titre">
 					<label for="categorie">Catégorie</label>
-					<input type="categorie" name="categorie" id="categorie">
+					<select name="categorie" id="categorie"><option value="">-- Sélectionner une catégorie --</option></select>
 					<div class="ligne"></div>
 					<input class="bouton_valider" type="submit" value="Valider">
 				</form>

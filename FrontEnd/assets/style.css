@@ -541,3 +541,27 @@ body > .container {
 	margin-right: 0px;
 }
 
+#page-2_modale select{
+	height: 50px;
+	font-size: 1.2em;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	background-color: #fff;
+}
+
+#zone_image img.preview_image{
+	width: 129px;           
+	height: 169px;
+	object-fit: cover;
+	border-radius: 3px;
+}
+
+.bouton_valider.active{
+	background-color: #1D6154;
+	border: 1px solid #1D6154;
+}
+
+#page-2_modale .bouton_valider.active{
+	background-color: #1D6154;
+	border: 1px solid #1D6154;
+}
